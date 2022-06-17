@@ -1,0 +1,47 @@
+@import "../Variables.scss";
+
+.navbar {
+  background-color: $navyColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    .navbar-right-profile {
+      display: flex;
+      align-items: center;
+      .profile-name {
+        color: #fff;
+        opacity: 0.6;
+        font-size: 12px;
+        margin-right: 1vw;
+      }
+      .profile-img {
+        border-radius: 50%;
+        margin-right: 1vw;
+      }
+    }
+    .navbar-right-icons {
+      display: flex;
+      align-items: center;
+      .icon-button {
+        padding: 10px;
+        opacity: 0.6;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+        }
+      }
+    }
+    .navbar-right-logout {
+      background-color: $lightNavyColor;
+      color: #fff;
+      text-align: center;
+      margin-right: 2vw;
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+}
