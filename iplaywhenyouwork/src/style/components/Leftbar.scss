@@ -1,0 +1,28 @@
+@import "../Variables.scss";
+.left-bar {
+  background-color: $grayColor;
+  width: 15vw;
+  height: 90vh;
+  .left-menus {
+    display: flex;
+    flex-direction: column;
+  }
+  .left-menu {
+    border-bottom: 1px solid $grayBorderColor;
+    height: 56px;
+    color: $grayFontColor;
+    display: flex;
+    align-items: center;
+    h5 {
+      padding: 22px 0px 22px 30px;
+    }
+    img {
+      padding: 22px 0px 22px 15px;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $grayHoverColor;
+      color: #fff;
+    }
+  }
+}
