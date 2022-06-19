@@ -1,15 +1,10 @@
 import "../style/components/MainCenter.css";
-import profile from "../static/img/profile.png";
+import Digda from "./Digda";
+import styled from "styled-components";
 import setting from "../static/img/icon/icon-setting.png";
 
 const MainCenter = () => {
-  const courseItems = [
-    { title: "사회봉사1", professor: "홍길동" },
-    { title: "벤처창업 웹 프로그래밍2", professor: "홍길동" },
-    { title: "창의연구실습1", professor: "홍길동" },
-    { title: "Financial Management", professor: "홍길동" },
-    { title: "프로그래밍연습", professor: "홍길동" },
-  ];
+  
 
   function randomDate() {
     const maxDate = Date.now();
@@ -40,39 +35,10 @@ const MainCenter = () => {
       {/* main-center-upper */}
       <div className="main-courses-container">
         {/* main-courses-header */}
-        <div className="main-courses-header">
-          <div className="main-courses-title">전체 수강강좌</div>
-          <div className="main-courses-setting">
-            <img className="icon-setting" src={setting} alt="icon-setting" />
-          </div>
-        </div>
+        
 
         {/* main-courses-collection */}
-        <div className="main-courses-collection">
-          {courseItems.map((courseItem, id) => {
-            return (
-              <div className="main-course-item" key={id}>
-                <img
-                  className="main-course-profile"
-                  src={profile}
-                  alt="main-course-profile"
-                />
-                <div className="main-course-label">
-                  <div className="main-course-label-upper">정규</div>
-                  <div className="main-course-label-under">학부</div>
-                </div>
-                <div className="main-course-description">
-                  <div className="main-course-title">
-                    <h3>{courseItem.title}</h3>
-                  </div>
-                  <div className="main-course-professor">
-                    {courseItem.professor}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <Digda></Digda>
       </div>
 
       {/* main-center-under */}
@@ -101,5 +67,18 @@ const MainCenter = () => {
     </div>
   );
 };
+
+const Container= styled.div`
+  position : absolute
+  top : 100px;
+  left : 100px;
+  width: 50px;
+  height: 300px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default MainCenter;
