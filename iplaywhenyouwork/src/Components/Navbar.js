@@ -5,13 +5,26 @@ import iconPopover from "../static/img/icon/icon-popover.png";
 import iconNoti from "../static/img/icon/icon-noti.png";
 import iconMsg from "../static/img/icon/icon-msg.png";
 import iconMenus from "../static/img/icon/icon-menus.png";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const profileName = "서예빈";
-  const navbarRightLogout="로그아웃"
+  const navbarRightLogout = "로그아웃";
+  const navigate = useNavigate();
+  const onClicknavLogo = () => {
+    navigate("/");
+  };
+  const onClickIconNoti = () => {
+    navigate("/chats");
+  };
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <img className="navbar-logo" src={navLogo} alt="nav-logo" />
+        <img
+          className="navbar-logo"
+          src={navLogo}
+          alt="nav-logo"
+          onClick={onClicknavLogo}
+        />
       </div>
       <div className="navbar-right">
         <div className="navbar-right-profile">
@@ -28,6 +41,7 @@ const Navbar = () => {
             className="icon-noti icon-button"
             src={iconNoti}
             alt="icon-noti"
+            onClick={onClickIconNoti}
           />
           <img className="icon-msg icon-button" src={iconMsg} alt="icon-msg" />
           <img
@@ -36,9 +50,7 @@ const Navbar = () => {
             alt="icon-menus"
           />
         </div>
-        <div className="navbar-right-logout">
-            {navbarRightLogout}
-        </div>
+        <div className="navbar-right-logout">{navbarRightLogout}</div>
       </div>
     </div>
   );
