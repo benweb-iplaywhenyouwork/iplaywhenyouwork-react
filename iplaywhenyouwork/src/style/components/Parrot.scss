@@ -1,5 +1,17 @@
 .parrot-game-popup{
     clear: left;
+    z-index: 100;
+    position: absolute;
+    top : 8%;
+    right : 5%;
+    background-color: white;
+    width: 400px;
+    height: 200px;
+}
+
+.parrot-title{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f568d;
 }
 
 .parrot{
@@ -10,6 +22,11 @@
     line-height: 150px;
     background-color: lightgreen;
     text-align: center;
+    
+}
+
+.parrot:hover{
+    background-color:darkseagreen;
 }
 
 .human{
@@ -22,6 +39,10 @@
     text-align: center;
 }
 
+.human:hover{
+    background-color:orangered
+}
+
 .voice-play{
     clear: left;
 }
@@ -29,3 +50,25 @@
 .species-image{
     vertical-align: middle;
 }
+
+.listen-button{
+    background-color: #1f568d;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.listen-button:hover{
+    background-color: darkslateblue;
+}
+
+.parrot-answer{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f568d;
+}
+

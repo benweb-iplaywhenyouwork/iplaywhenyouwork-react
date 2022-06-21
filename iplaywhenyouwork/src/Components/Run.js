@@ -2,10 +2,11 @@ import {useEffect, useRef, useState} from "react";
 import Player from "./object/Player";
 import Obstacle from "./object/Obstacle";
 
+
 function Game() {
     const panelRef = useRef(null);
     const player = new Player(panelRef);
-
+    
     let animation;
     let timer = 0;
     let obstacles = [];
@@ -16,30 +17,37 @@ function Game() {
     const update = () => {
         const panel = panelRef.current.getContext('2d');
         animation = requestAnimationFrame(update);
+        panel.beginPath();
+        panel.moveTo(0, 40);
+        panel.lineTo(0, 400);
+        panel.strokeStyle = "#e0e0e0";
+        panel.stroke();
         timer++;
         panel.clearRect(0, 0, panel.width, panel.height);
-        if(Math.random() < 0.01){
+        if(Math.random() < 0.02){
             let obstacle
             if (Math.random() > 0.5)
-                obstacle = new Obstacle(panelRef, 70);
+                obstacle = new Obstacle(panelRef, 40);
             else
                 obstacle = new Obstacle(panelRef, 0);
             obstacles.push(obstacle);
         }
         obstacles.forEach((obs, i, obsArr) => {
-            if(obs.x < 0) obsArr.splice(i, 1);
+            if(obs.x < 10) obsArr.splice(i, 1);
             onCollisionEnter(player, obs);
             obs.x -= 2;
             obs.draw()
             
         })
         if(jump){
-            player.y -= 2 ;
+            player.y -= 1 ;
             jumpTimer += 2;
         }else{
-            if(player.y < 100)
-                player.y += 3;
+            player.y += 1;
+            if(player.y > player.bottom)
+                player.y -= 2;
         }
+        
         if(jumpTimer > 100){
             jump = false;
             jumpTimer = 0;
@@ -64,20 +72,20 @@ function Game() {
         // 거리 계산
         const distanceX = player.x - nearX;
         const distanceY = player.y - nearY;
-        // 문제 -> 플레이어가 정사각형이어야 함.
+        // 문제 -> 플레이어가 정사각형이어야 함. player.width거나 player.height이거나 무관.
         if(Math.sqrt((distanceX**2)+(distanceY**2)) < player.height){
             panel.clearRect(0 , 0, panel.width, panel.height);
             cancelAnimationFrame(animation);
         }
         
     }
+
     
     //canvas 설정
     useEffect(() => {
         const gamePanel = panelRef.current.getContext('2d');
-        gamePanel.width = 2000;
-        gamePanel.height = 500;
-
+        gamePanel.width = 400;
+        gamePanel.height = 50;
         update();
     }, []);
     //space가 눌린 정도로 점프의 정도를 조절할 방법은 없나?
@@ -90,7 +98,9 @@ function Game() {
 
 
     return (
-        <canvas ref={panelRef} width="500" height="100"></canvas>
+        
+        <canvas ref={panelRef} width="400" height="50"></canvas>
+        
     )
 }
 

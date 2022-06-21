@@ -13,6 +13,7 @@ const MainCenter = () => {
     { title: "프로그래밍연습", professor: "홍길동" },
   ];
   const [runGame, setRunGame] = useState(false);
+  const [effect, setEffect] = useState("display");
 
   function randomDate() {
     const maxDate = Date.now();
@@ -32,7 +33,11 @@ const MainCenter = () => {
   }
   
   const playRunGame = () => {
-    setRunGame(!runGame);
+    setEffect("nondisplay");
+    setTimeout(()=> {
+      setRunGame(!runGame);
+    }, 500)
+    
   }
 
   const statusItems = [
@@ -87,7 +92,7 @@ const MainCenter = () => {
         {/* main-status-header */}
         {
         runGame ? <Run/> : 
-        <div className="main-status-header">
+        <div className={`main-status-header-${effect}`}>
           <div className="main-status-description">
             <div className="main-status-notice" >공지사항</div>
         

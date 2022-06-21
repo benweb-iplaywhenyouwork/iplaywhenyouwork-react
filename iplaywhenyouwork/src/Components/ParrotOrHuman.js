@@ -10,7 +10,7 @@ import parrot3 from "../static/audio/parrot3.mp3"
 import parrot4 from "../static/audio/parrot_set1.mp3"
 import {useEffect, useState} from "react";
 
-// 코드 죄송합니다... 리액트는 왜 fs가 없는거지..? - 엄성호
+// 코드 죄송합니다... 리액트는 왜 fs가 없는거지..?  - 엄성호
 function ParrotorHuman () {
     const quizSounds = []
     const [answer, setAnswer] = useState("");
@@ -59,13 +59,13 @@ function ParrotorHuman () {
     useEffect(() => {
         if(index === 8){
             setAnswer("GameEnd!");
-            //1초 후 modal 닫는 함수.
+            setIndex(0);
         }
     }, [index])
 
     return(
         <div className="parrot-game-popup">
-            <div>Parrot or Human?</div>
+            <div className="parrot-title">Parrot or Human?</div>
             <div className="parrot" onClick={parrotClick}>
                 <img className="species-image" src={parrotImg} width="100" height="100" />
             </div>
@@ -74,9 +74,9 @@ function ParrotorHuman () {
             </div>
 
             <div className="voice-play">
-                <button className="listenButton" onClick={playSound}>listen</button>
+                <button className="listen-button" onClick={playSound}>listen</button>
             </div>
-            <div>{answer}</div>
+            <div className="parrot-answer">{answer}</div>
         </div>
     )
 }

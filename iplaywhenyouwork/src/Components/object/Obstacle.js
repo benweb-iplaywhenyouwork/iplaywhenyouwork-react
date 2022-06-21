@@ -3,8 +3,8 @@ class Obstacle {
         this.canvas = canvas;
         this.x = 500;
         this.y = y;
-        this.width = 30;
-        this.height = 30; 
+        this.width = 10;
+        this.height = 10; 
         
     }
     draw(){
