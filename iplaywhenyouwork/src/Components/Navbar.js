@@ -5,9 +5,17 @@ import iconPopover from "../static/img/icon/icon-popover.png";
 import iconNoti from "../static/img/icon/icon-noti.png";
 import iconMsg from "../static/img/icon/icon-msg.png";
 import iconMenus from "../static/img/icon/icon-menus.png";
+import {useState} from "react";
+import ParrotorHuman from "./ParrotOrHuman";
+
 const Navbar = () => {
   const profileName = "서예빈";
   const navbarRightLogout="로그아웃"
+  const [parrotGame, setParrotGame] = useState(false);
+  const openParrot = () => {
+    setParrotGame(!parrotGame)
+  }
+
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -28,7 +36,9 @@ const Navbar = () => {
             className="icon-noti icon-button"
             src={iconNoti}
             alt="icon-noti"
+            onClick={openParrot}    
           />
+          {parrotGame ? <ParrotorHuman/>:null}
           <img className="icon-msg icon-button" src={iconMsg} alt="icon-msg" />
           <img
             className="icon-menus icon-button"

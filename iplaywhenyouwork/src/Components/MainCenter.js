@@ -1,6 +1,8 @@
 import "../style/components/MainCenter.css";
 import profile from "../static/img/profile.png";
 import setting from "../static/img/icon/icon-setting.png";
+import Run from './Run';
+import {useState} from "react";
 
 const MainCenter = () => {
   const courseItems = [
@@ -10,6 +12,7 @@ const MainCenter = () => {
     { title: "Financial Management", professor: "홍길동" },
     { title: "프로그래밍연습", professor: "홍길동" },
   ];
+  const [runGame, setRunGame] = useState(false);
 
   function randomDate() {
     const maxDate = Date.now();
@@ -26,6 +29,10 @@ const MainCenter = () => {
       ":" +
       date.getMinutes();
     return formattedDate;
+  }
+  
+  const playRunGame = () => {
+    setRunGame(!runGame);
   }
 
   const statusItems = [
@@ -78,14 +85,21 @@ const MainCenter = () => {
       {/* main-center-under */}
       <div className="main-status-container">
         {/* main-status-header */}
+        {
+        runGame ? <Run/> : 
         <div className="main-status-header">
           <div className="main-status-description">
-            <div className="main-status-notice">공지사항</div>
-            <div className="main-status-classes">진행 강좌 게시물</div>
+            <div className="main-status-notice" >공지사항</div>
+        
+            <div className="main-status-classes" onClick={playRunGame}>진행 강좌 게시물</div>
           </div>
           <div className="main-status-button">더보기</div>
-        </div>
-
+          </div>
+        }
+        
+          
+        
+      
         {/* 공지사항 게시물 */}
         <div className="main-status-collection">
           {statusItems.map((statusItem, id) => {
