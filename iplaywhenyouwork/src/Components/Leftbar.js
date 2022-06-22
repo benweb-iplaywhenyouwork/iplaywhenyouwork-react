@@ -5,8 +5,16 @@ import iconExtracourses from "../static/img/icon/icon-extracourses.png";
 import iconOnlineclass from "../static/img/icon/icon-onlineclass.png";
 import iconEclass from "../static/img/icon/icon-eclass.png";
 import Instruction from "./Instruction";
+import MatchInitial from "./MatchInitial";
+import { useEffect, useState } from "react";
 
 const LeftBar = () => {
+  const [chosung, setChosung] = useState(null);
+
+  useEffect(()=>{
+    setChosung(chosung);
+  }, [chosung])
+
   return (
     <div className="left-bar">
       <div className="left-menus">
@@ -41,8 +49,16 @@ const LeftBar = () => {
         <div className="left-menu-eclass left-menu">
           <img className="icon-eclass" src={iconEclass} alt="icon-eclass"></img>
           <h5>e-Class</h5>
+          <div className="chosung-menu">
+            <div onClick={() => setChosung("문학")}>문학</div>
+            <div onClick={() => setChosung("일반")}>일반</div>
+            <div onClick={() => setChosung("역사")}>역사</div>
+            <div onClick={() => setChosung("영화")}>영화</div>
+            <div onClick={() => setChosung(null)}>리셋</div>
+          </div>
         </div>
         <Instruction></Instruction>
+        {chosung ? <MatchInitial inputField={chosung}/>:null}
       </div>
     </div>
   );
