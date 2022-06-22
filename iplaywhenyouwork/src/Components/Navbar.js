@@ -13,7 +13,7 @@ const Navbar = () => {
   const onClicknavLogo = () => {
     navigate("/");
   };
-  const onClickIconNoti = () => {
+  const onClickIconMsg = () => {
     navigate("/chats");
   };
   return (
@@ -41,9 +41,13 @@ const Navbar = () => {
             className="icon-noti icon-button"
             src={iconNoti}
             alt="icon-noti"
-            onClick={onClickIconNoti}
           />
-          <img className="icon-msg icon-button" src={iconMsg} alt="icon-msg" />
+          <img
+            className="icon-msg icon-button"
+            src={iconMsg}
+            alt="icon-msg"
+            onClick={onClickIconMsg}
+          />
           <img
             className="icon-menus icon-button"
             src={iconMenus}

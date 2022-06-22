@@ -1,9 +1,14 @@
+import LeftBar from "../Components/Leftbar";
 import Navbar from "../Components/Navbar";
+import ChatCenter from "../Components/ChatCenter";
 const ChatPage = () => {
   return (
     <>
       <Navbar />
-      <div>"Chatpage"</div>
+      <div className="chat-page" style={{ display: "flex" }}>
+        <LeftBar />
+        <ChatCenter />
+      </div>
     </>
   );
 };
