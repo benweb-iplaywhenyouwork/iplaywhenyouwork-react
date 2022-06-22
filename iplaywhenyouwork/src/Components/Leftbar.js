@@ -4,7 +4,7 @@ import iconMypage from "../static/img/icon/icon-mypage.png";
 import iconExtracourses from "../static/img/icon/icon-extracourses.png";
 import iconOnlineclass from "../static/img/icon/icon-onlineclass.png";
 import iconEclass from "../static/img/icon/icon-eclass.png";
-import iconGuide from "../static/img/icon/icon-guide.png";
+import Instruction from "./Instruction";
 
 const LeftBar = () => {
   return (
@@ -42,10 +42,7 @@ const LeftBar = () => {
           <img className="icon-eclass" src={iconEclass} alt="icon-eclass"></img>
           <h5>e-Class</h5>
         </div>
-        <div className="left-menu-guide left-menu">
-          <img className="icon-guide" src={iconGuide} alt="icon-guide"></img>
-          <h5>이용안내</h5>
-        </div>
+        <Instruction></Instruction>
       </div>
     </div>
   );

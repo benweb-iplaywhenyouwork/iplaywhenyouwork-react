@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Cell from "./Cell";
-import Timer from "./Timer";
 import setting from "../static/img/icon/icon-setting.png";
 
 function Digda() {
@@ -11,6 +10,7 @@ function Digda() {
   }
 
   let time = 0;
+  const [time2, setTime] = useState(10);
   const [numbers, setNumbers] = useState(array);
   const [gameFlag, setGameFlag] = useState(false);
   const [score, setScore] = useState(0);
@@ -38,19 +38,25 @@ function Digda() {
     setGameFlag(true);
     var delay = randNum(4)*200;
     const inter = setInterval(function() {
-      if(time === 4){
-        console.log(1);
+      if(time === 6){
+        setTime(10)
+        clearInterval(timer);
         endGame();
         clearInterval(inter);
       }
-      console.log(time);
-      time = time+1;
-      const index = randNum(4)
-      setNumbers(numbers => [...numbers.slice(0,index), time+1, ...numbers.slice(index+1)]);
-      setTimeout(function() {
-        setNumbers(numbers => [...numbers.slice(0,index), 1, ...numbers.slice(index+1)]);
-      },3000)
-    }, 3000)
+      else{
+        console.log(time);
+        time = time+1;
+        const index = randNum(4)
+        setNumbers(numbers => [...numbers.slice(0,index), time+1, ...numbers.slice(index+1)]);
+        setTimeout(function() {
+          setNumbers(numbers => [...numbers.slice(0,index), 1, ...numbers.slice(index+1)]);
+        },1000)
+      }
+    }, 1500)
+    const timer = setInterval(function() {
+      setTime(time2 => time2 - 1)
+    }, 1000)
   };
   const endGame = () => {
     setNumbers([1,1,1,1,1])
@@ -64,24 +70,11 @@ function Digda() {
     { title: "프로그래밍연습", professor: "홍길동", idx: 4},
   ];
   return (
-    // <div>
-    //   <ScoreBoard>{score}</ScoreBoard>
-    //   <Cell num={numbers[0]} key={0} handleClick={handleClick}></Cell>
-    //   <Cell num={numbers[1]} key={1} handleClick={handleClick}></Cell>
-    //   <Cell num={numbers[2]} key={2} handleClick={handleClick}></Cell>
-    //   <Cell num={numbers[3]} key={3} handleClick={handleClick}></Cell>
-    //   <Cell num={numbers[4]} key={4} handleClick={handleClick}></Cell>
-    //   {gameFlag ? (
-    //     <Timer/>
-    //   ) : (
-    //     <StartButton onClick={startGame}>start</StartButton>
-    //   )}
-    // </div>
     <>
     <div className="main-courses-header">
       <div>
         {gameFlag ? (
-          <ScoreBoard className="main-courses-title">{score}</ScoreBoard>
+          <ScoreBoard className="main-courses-title">score : {score} Time : {time2}</ScoreBoard>
         ) : (
           <StartButton className="main-courses-title" onClick={startGame}>전체 수강강좌</StartButton>
         )}
