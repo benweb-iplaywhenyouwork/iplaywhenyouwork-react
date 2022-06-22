@@ -53,6 +53,7 @@ function ParrotorHuman () {
     }
 
     const playSound = () => {
+        setAnswer("");
         quizSounds[index].play();
     }
 
