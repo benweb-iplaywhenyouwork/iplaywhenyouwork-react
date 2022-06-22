@@ -4,6 +4,8 @@ import iconHome from "../static/img/icon/icon-home.png";
 import iconBreadCumb from "../static/img/icon/icon-breadcumb.png";
 import StartFirebase from "../firebase-config";
 import { getDatabase, ref, set } from "firebase/database";
+import profile from "../static/img/profile.png";
+import moment from "moment";
 
 const databaseURL = "https://iplaywhenyouwork-default-rtdb.firebaseio.com";
 const ChatCenter = () => {
@@ -18,26 +20,6 @@ const ChatCenter = () => {
     setdb(getDatabase());
     _getChats();
   }, []);
-
-  //   const _getChats = () => {
-  //     const dbref = ref(db);
-  //     get(child(dbref, "chats/0")).then((snapshot) => {
-  //       if (snapshot.exists()) {
-
-  //         setChats([{
-  //           author: snapshot.val().Author,
-  //           content: snapshot.val().Content,
-  //         }]);
-  //         console.log(snapshot.val().author);
-  //       } else {
-  //         console.log("no data found");
-  //       }
-  //     });
-  //   };
-
-  //   useEffect(() => {
-  //     _getChats();
-  //   }, []);
 
   const onKeyPressUserInput = (e) => {
     console.log("did");
@@ -65,13 +47,13 @@ const ChatCenter = () => {
     setContent(e.target.value);
   };
 
-  //   const onKeyPressNewChat = (e) => {
-  //     if (e.key === "Enter") {
-  //       postChat(user, content);
-  //       _getChats();
-  //       setContent("");
-  //     }
-  //   };
+  const handleChatSubmit = async (e) => {
+    e.preventDefault();
+    await postChat(user, content);
+    _getChats();
+    setContent("");
+  };
+
 
   const onClickButton = () => {
     postChat(user, content);
@@ -83,17 +65,11 @@ const ChatCenter = () => {
       set(ref(db, `chats/${chatCounts + 1}`), {
         author: user,
         content: content,
+        createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
       });
     }
     _getChats();
   };
-
-  //   const postChats = async () => {
-  //     post(`${databaseURL}/chats.json`, {
-  //       author: user,
-  //       content: content,
-  //     });
-  //   };
 
   return (
     <div className="chat-center-container">
@@ -120,23 +96,47 @@ const ChatCenter = () => {
             </div>
             <div className="chats">
               {chats &&
-                chats.map((chat, key) => {
-                  return (
-                    <div key={key}>
-                      <div className="chat-author">{chat && chat.author}</div>
-                      <div className="chat-content">{chat && chat.content}</div>
-                    </div>
-                  );
-                })}
+                chats
+                  .filter((chat) => chat !== null)
+                  .map((chat, key) => {
+                    return (
+                      <div className="chat-item-container" key={key}>
+                        <div className="chat-item">
+                          <div className="chat-item-left">
+                            <img
+                              className="chat-profile"
+                              src={profile}
+                              alt="chat-profile"
+                            />
+                          </div>
+                          <div className="chat-item-right">
+                            <div className="chat-item-right-top">
+                              <div className="chat-author">
+                                {chat && chat.author}
+                              </div>
+                              <div className="chat-date">
+                                {chat && chat.createdAt}
+                              </div>
+                            </div>
+                            <div className="chat-item-right-under">
+                              <div className="chat-content">
+                                {chat && chat.content}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
             </div>
             <div className="new-chat-container">
-              <label>{user}</label>
-              <input
-                placeholder="채팅을 입력해주세요"
-                onChange={onChangeNewChat}
-                value={content}
-              />
-              <button onClick={onClickButton}>전송</button>
+              <form onSubmit={handleChatSubmit}>
+                <textarea
+                  onChange={onChangeNewChat}
+                  value={content}
+                />
+                <button type="submit" onClick={onClickButton}>메시지 보내기</button>
+              </form>
             </div>
           </div>
         ) : (

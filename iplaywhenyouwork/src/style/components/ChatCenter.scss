@@ -34,10 +34,90 @@
       text-align: left;
       margin-bottom: 2vh;
     }
-    .chats-container{
-        width: 100%;
+    .chats-container {
+      width: 100%;
+      
+      display: flex;
+      flex-direction: column;
+      
+      .chats {
+        margin-top: 5vh;
         display: flex;
         flex-direction: column;
+        overflow: scroll;
+        height: 50vh;
+        border: 1px solid #d9dbdb;
+        background-color: #fff;
+        .chat-item-container {
+          padding: 15px;
+          .chat-item {
+            width: 100%;
+            border-bottom: 1px solid #d9dbdb;
+            display: flex;
+            align-items: flex-start;
+
+            .chat-item-left {
+              float: left;
+            }
+            .chat-item-right {
+              display: flex;
+              width: 100%;
+              flex-direction: column;
+              .chat-item-right-top {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .chat-author {
+                  color: $navyColor;
+                  font-weight: bold;
+                  font-size: 15px;
+                  padding-left: 1vw;
+                }
+                .chat-date {
+                  color: $grayFontColor;
+                  font-size: 12px;
+                }
+              }
+              .chat-item-right-under{
+                .chat-content{
+                  font-size: 14px;
+                  color: #666;
+                  text-align: left;
+                  padding-left: 1vw;
+                  padding-top: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .new-chat-container{
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      padding: 19px;
+      background-color: #fff;
+      border: 1px solid #e3e3e3;
+      form{
+        display: flex;
+        align-items: center;
+        
+      }
+      textarea{
+        height: 85px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 90%;
+      }
+      button{
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        color: #fff;
+        font-size: 14px;
+        height: 85px;
+        border-radius: 4px;
+        margin-left: 15px;
+      }
     }
     .chat-header-item {
       background-color: #fff;
@@ -51,7 +131,7 @@
         font-size: 15px;
         font-weight: bold;
       }
-      .chat-user-name{
+      .chat-user-name {
         padding: 6px 12px;
         font-size: 13px;
       }
