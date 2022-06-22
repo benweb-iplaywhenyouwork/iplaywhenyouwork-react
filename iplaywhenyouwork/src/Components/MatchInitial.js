@@ -111,13 +111,13 @@ function MatchInitial({inputField}) {
 
     return(
         <div>
-        <div className="chosung">{choSung}</div>
-        <form style={{color: '#999', position: "absolute", top:"50px"}} onSubmit={answerCheck}>
+        <div style={{color: '#999', position: "absolute", left: "10px", top:"50px", fontSize:"20px"}} >{choSung}</div>
+        <form style={{color: '#999', position: "absolute", top:"75px"}} onSubmit={answerCheck}>
             <input className="chosung-input" onChange={e => setAnswer(e.target.value)}/>
             <button className="chosung-submit-button" >입력</button>
         </form>
-        <div style={{color: '#999', position: "absolute", left: "50px", top:"75px", width: "100px"}} className="chosung-correct">{evaluate}</div>
-        <div style={{color: '#999', position: "absolute", left: "10px", top:"100px", width: "190px"}} className="chosung-explanation">{explanation}</div>
+        <div style={{color: '#999', position: "absolute", left: "50px", top:"100px", width: "100px"}} className="chosung-correct">{evaluate}</div>
+        <div style={{color: '#999', position: "absolute", left: "10px", top:"125px", width: "190px"}} className="chosung-explanation">{explanation}</div>
         </div>
     )
 }
