@@ -4,11 +4,8 @@ import iconPopover from "../static/img/icon/icon-popover.png";
 import iconNoti from "../static/img/icon/icon-noti.png";
 import iconMsg from "../static/img/icon/icon-msg.png";
 import iconMenus from "../static/img/icon/icon-menus.png";
-<<<<<<< HEAD
 import ImageComponent from "./ImageComponent";
-=======
 import { useNavigate } from "react-router-dom";
->>>>>>> 6e315c30626ff09641481a3148f098c476f29bcc
 const Navbar = () => {
   const profileName = "서예빈";
   const navbarRightLogout = "로그아웃";
