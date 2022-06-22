@@ -1,7 +1,6 @@
 import "../style/components/MainCenter.css";
 import Digda from "./Digda";
 import styled from "styled-components";
-import setting from "../static/img/icon/icon-setting.png";
 import Run from './Run';
 import {useState} from "react";
 

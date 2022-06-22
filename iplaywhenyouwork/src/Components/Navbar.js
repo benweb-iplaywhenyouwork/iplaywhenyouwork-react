@@ -5,13 +5,13 @@ import iconNoti from "../static/img/icon/icon-noti.png";
 import iconMsg from "../static/img/icon/icon-msg.png";
 import iconMenus from "../static/img/icon/icon-menus.png";
 import ImageComponent from "./ImageComponent";
+import NameComponent from "./NameComponent";
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 import ParrotorHuman from "./ParrotOrHuman";
 
 
 const Navbar = () => {
-  const profileName = "서예빈";
   const navbarRightLogout = "로그아웃";
   const [parrotGame, setParrotGame] = useState(false);
   const openParrot = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-right">
         <div className="navbar-right-profile">
-          <div className="profile-name">{profileName}</div>
+          <NameComponent></NameComponent>
           <ImageComponent></ImageComponent>
         </div>
         <div className="navbar-right-icons">

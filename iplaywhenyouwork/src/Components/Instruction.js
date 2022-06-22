@@ -23,7 +23,7 @@ export default class Instruction extends React.Component {
             open
             onClick={this.handleShowDialog}
           >
-            <div style={{color: '#999'}}>전체수강강좌 버튼을 통해 게임을 시작해보세요!</div>
+            <div style={{color: '#999'}}>Press Button to Start!</div>
           </dialog>
         )}
       </div>
