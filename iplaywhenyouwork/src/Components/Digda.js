@@ -128,7 +128,7 @@ const Container = styled.div`
 
 const StartButton = styled.button`
   margin-top: 20px;
-  width: 150px;
+  width: 180px;
   height: 40px;
 `;
 
