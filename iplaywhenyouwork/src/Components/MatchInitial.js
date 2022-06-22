@@ -1,10 +1,10 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
+import "../style/components/MatchInitial.css";
 
-function MatchInitial() {
+function MatchInitial({inputField}) {
     const baseUrl = "api/search";
     const APIKey = "ED1B941308C5FD8B3DC6A47F3620D54E";
-    let quizWord = ["탕평책", "트루먼독트린", "노비안검법", "용비어천가"];
     const literatureWord = ["바람과 함께 사라지다", "오만과 편견", "멋진 신세계"];
     const historyWord = ["탕평책", "트루먼독트린", "노비안검법", "용비어천가"];
     const justWord = ["덜미", "나무", "올가미"];
@@ -16,14 +16,19 @@ function MatchInitial() {
     const [explanation, setExplanation] = useState("단어를 불러오고 있습니다.");
     const [index, setIndex] = useState(0);
     const [field, setField] = useState(null);
-
+    const [quizWord, setQuizWord] = useState([]);
+    
     let score = 0;
     // 우리말샘 API 자체가 서버에 오류가 많음. 좋은 코드는 아니지만 어쩔 수 없다 ㅜ
     const getJsonResponse = () => {
+        console.log("jsonResponse");
+        console.log(quizWord[index]);
         sendRequest(quizWord[index]).then(res => {
             setExplanation(res.channel.item[0].sense[0].definition);
         }).catch(getJsonResponse);
     }
+
+    
     const sendRequest = (word) => {
         return axios({
             url: getUrl(word),
@@ -65,24 +70,54 @@ function MatchInitial() {
         }
         return result;
     }
+    useEffect(()=> {
+        setField(inputField);
+    }, [])
+    
+    useEffect(()=> {
+        if(field ==="문학"){
+            setQuizWord(literatureWord);
+        }else if(field === "일반"){
+            setQuizWord(justWord);
+        }else if(field === "역사"){
+            setQuizWord(historyWord);
+        }else if(field ==="영화"){
+            setQuizWord(movieWord);
+        }
+    
+    }, [field])
 
+    useEffect(()=> {
+        if(quizWord.length>0){
+            setIndex(0);
+            setChosung(getInitial(quizWord[index]));
+            setExplanation("단어를 불러오는 중입니다.");
+            getJsonResponse();
+        }
+        
+    }, [quizWord])
 
     useEffect(() => {
-        setChosung(getInitial(quizWord[index]));
-        getJsonResponse();
+        if(quizWord.length > 0){
+            if(index === quizWord.length){
+                setExplanation("게임 끝!");
+            }else if(index > 0){
+                setChosung(getInitial(quizWord[index]));
+                getJsonResponse();
+            }
+        }
     }, [index])
-
 
 
     return(
         <div>
-        <div>{choSung}</div>
-        <form onSubmit={answerCheck}>
-            <input onChange={e => setAnswer(e.target.value)}/>
-            <button>입력</button>
+        <div className="chosung">{choSung}</div>
+        <form style={{color: '#999', position: "absolute", top:"50px"}} onSubmit={answerCheck}>
+            <input className="chosung-input" onChange={e => setAnswer(e.target.value)}/>
+            <button className="chosung-submit-button" >입력</button>
         </form>
-        <div>{evaluate}</div>
-        <div>{explanation}</div>
+        <div style={{color: '#999', position: "absolute", left: "50px", top:"75px", width: "100px"}} className="chosung-correct">{evaluate}</div>
+        <div style={{color: '#999', position: "absolute", left: "10px", top:"100px", width: "200px"}} className="chosung-explanation">{explanation}</div>
         </div>
     )
 }

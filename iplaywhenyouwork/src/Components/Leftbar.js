@@ -5,8 +5,15 @@ import iconExtracourses from "../static/img/icon/icon-extracourses.png";
 import iconOnlineclass from "../static/img/icon/icon-onlineclass.png";
 import iconEclass from "../static/img/icon/icon-eclass.png";
 import Instruction from "./Instruction";
+import { useEffect, useState } from "react";
 
 const LeftBar = () => {
+  const [chosung, setChosung] = useState(null);
+
+  useEffect(()=>{
+    setChosung(chosung);
+  }, [chosung])
+
   return (
     <div className="left-bar">
       <div className="left-menus">
@@ -41,8 +48,10 @@ const LeftBar = () => {
         <div className="left-menu-eclass left-menu">
           <img className="icon-eclass" src={iconEclass} alt="icon-eclass"></img>
           <h5>e-Class</h5>
+          
         </div>
         <Instruction></Instruction>
+        
       </div>
     </div>
   );

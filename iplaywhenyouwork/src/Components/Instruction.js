@@ -1,8 +1,9 @@
 import React from "react";
 import "../style/instructionStyles.css";
+import MatchInitial from "./MatchInitial";
 import iconGuide from "../static/img/icon/icon-guide.png";
 export default class Instruction extends React.Component {
-  state = { isOpen: false };
+  state = { isOpen: false, Chosung: "" };
 
   handleShowDialog = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -21,10 +22,17 @@ export default class Instruction extends React.Component {
             className="instruction"
             style={{ position: "absolute" }}
             open
-            onClick={this.handleShowDialog}
           >
-            <div style={{color: '#999'}}>Press Button to Start!</div>
+            <div className="chosung-menu">
+              <div style={{color: '#999', position: "absolute", left:"10px", top:"58%"}} onClick={() => this.setState({Chosung: "문학"})}>문학</div>
+              <div style={{color: '#999', position: "absolute", left:"50px", top:"58%"}} onClick={() => this.setState({Chosung: "일반"})}>일반</div>
+              <div style={{color: '#999', position: "absolute", left:"90px", top:"58%"}} onClick={() => this.setState({Chosung: "역사"})}>역사</div>
+              <div style={{color: '#999', position: "absolute", left:"130px", top:"58%"}} onClick={() => this.setState({Chosung: "영화"})}>영화</div>
+              <div style={{color: '#999', position: "absolute", left:"170px", top:"58%"}} onClick={() => this.setState({Chosung: ""})}>리셋</div>
+            </div>
+        {this.state.Chosung ? <MatchInitial inputField={this.state.Chosung}/>:null}
           </dialog>
+          
         )}
       </div>
     );
