@@ -21,8 +21,6 @@ function MatchInitial({inputField}) {
     let score = 0;
     // 우리말샘 API 자체가 서버에 오류가 많음. 좋은 코드는 아니지만 어쩔 수 없다 ㅜ
     const getJsonResponse = () => {
-        console.log("jsonResponse");
-        console.log(quizWord[index]);
         sendRequest(quizWord[index]).then(res => {
             setExplanation(res.channel.item[0].sense[0].definition);
         }).catch(getJsonResponse);
