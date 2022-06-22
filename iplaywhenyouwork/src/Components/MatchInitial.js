@@ -117,7 +117,7 @@ function MatchInitial({inputField}) {
             <button className="chosung-submit-button" >입력</button>
         </form>
         <div style={{color: '#999', position: "absolute", left: "50px", top:"75px", width: "100px"}} className="chosung-correct">{evaluate}</div>
-        <div style={{color: '#999', position: "absolute", left: "10px", top:"100px", width: "200px"}} className="chosung-explanation">{explanation}</div>
+        <div style={{color: '#999', position: "absolute", left: "10px", top:"100px", width: "190px"}} className="chosung-explanation">{explanation}</div>
         </div>
     )
 }
