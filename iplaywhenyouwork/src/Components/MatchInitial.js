@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import "../style/components/MatchInitial.css";
 
 function MatchInitial({inputField}) {
-    const baseUrl = "api/search";
+    const baseUrl = "https://opendict.korean.go.kr/api/search";
     const APIKey = "ED1B941308C5FD8B3DC6A47F3620D54E";
     const literatureWord = ["바람과 함께 사라지다", "오만과 편견", "멋진 신세계"];
     const historyWord = ["탕평책", "트루먼독트린", "노비안검법", "용비어천가"];
