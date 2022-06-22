@@ -2,9 +2,23 @@ import "../style/components/MainCenter.css";
 import Digda from "./Digda";
 import styled from "styled-components";
 import setting from "../static/img/icon/icon-setting.png";
+import Run from './Run';
+import {useState} from "react";
 
 const MainCenter = () => {
+<<<<<<< HEAD
   
+=======
+  const courseItems = [
+    { title: "사회봉사1", professor: "홍길동" },
+    { title: "벤처창업 웹 프로그래밍2", professor: "홍길동" },
+    { title: "창의연구실습1", professor: "홍길동" },
+    { title: "Financial Management", professor: "홍길동" },
+    { title: "프로그래밍연습", professor: "홍길동" },
+  ];
+  const [runGame, setRunGame] = useState(false);
+  const [effect, setEffect] = useState("display");
+>>>>>>> 7b08d42c1b19f29730a9f9d5e3adc65424fa4021
 
   function randomDate() {
     const maxDate = Date.now();
@@ -21,6 +35,14 @@ const MainCenter = () => {
       ":" +
       date.getMinutes();
     return formattedDate;
+  }
+  
+  const playRunGame = () => {
+    setEffect("nondisplay");
+    setTimeout(()=> {
+      setRunGame(!runGame);
+    }, 500)
+    
   }
 
   const statusItems = [
@@ -44,14 +66,21 @@ const MainCenter = () => {
       {/* main-center-under */}
       <div className="main-status-container">
         {/* main-status-header */}
-        <div className="main-status-header">
+        {
+        runGame ? <Run/> : 
+        <div className={`main-status-header-${effect}`}>
           <div className="main-status-description">
-            <div className="main-status-notice">공지사항</div>
-            <div className="main-status-classes">진행 강좌 게시물</div>
+            <div className="main-status-notice" >공지사항</div>
+        
+            <div className="main-status-classes" onClick={playRunGame}>진행 강좌 게시물</div>
           </div>
           <div className="main-status-button">더보기</div>
-        </div>
-
+          </div>
+        }
+        
+          
+        
+      
         {/* 공지사항 게시물 */}
         <div className="main-status-collection">
           {statusItems.map((statusItem, id) => {

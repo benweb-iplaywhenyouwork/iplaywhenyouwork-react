@@ -6,9 +6,17 @@ import iconMsg from "../static/img/icon/icon-msg.png";
 import iconMenus from "../static/img/icon/icon-menus.png";
 import ImageComponent from "./ImageComponent";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react";
+import ParrotorHuman from "./ParrotOrHuman";
+
+
 const Navbar = () => {
   const profileName = "서예빈";
   const navbarRightLogout = "로그아웃";
+  const [parrotGame, setParrotGame] = useState(false);
+  const openParrot = () => {
+    setParrotGame(!parrotGame)
+  }
   const navigate = useNavigate();
   const onClicknavLogo = () => {
     navigate("/");
@@ -16,6 +24,7 @@ const Navbar = () => {
   const onClickIconMsg = () => {
     navigate("/chats");
   };
+
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -41,13 +50,17 @@ const Navbar = () => {
             className="icon-noti icon-button"
             src={iconNoti}
             alt="icon-noti"
+            onClick={openParrot}    
           />
+
+          {parrotGame ? <ParrotorHuman/>:null}
           <img
             className="icon-msg icon-button"
             src={iconMsg}
             alt="icon-msg"
             onClick={onClickIconMsg}
           />
+
           <img
             className="icon-menus icon-button"
             src={iconMenus}
