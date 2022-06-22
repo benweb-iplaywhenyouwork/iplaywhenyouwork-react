@@ -1,4 +1,78 @@
+@import "../Variables.scss";
+
 .main-right-container {
   width: 20vw;
-  border: 1px solid black;
+  .right-container {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    .right-header {
+      display: flex;
+      .header-title {
+        color: $navyColor;
+        font-weight: bold;
+      }
+    }
+    .right-content {
+      padding: 15px;
+
+      
+      .right-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        .right-item-right {
+          margin-left: 1vw;
+
+          //upper
+          .imptNotice-title h5 {
+            color: #666;
+            margin-bottom: 1vh;
+          }
+          .imptNotice-date {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: $grayFontColor;
+            img {
+              margin-right: 0.5vw;
+            }
+          }
+
+          //under
+          .allNotice-item-title h5{
+            color: $navyColor;
+            margin-bottom: 1vh;
+            text-align: left;
+          }
+          .allNotice-item-description{
+            color: #666;
+            font-size: 14px;
+            text-align: left;
+          }
+        }
+      }
+
+      //mid
+      .main-right-mid-content {
+        padding: 16px 20px;
+        .main-right-mid-item {
+          text-align: left;
+        }
+      }
+    }
+    .main-right-upper-button {
+      .add-button {
+        width: 70%;
+        margin: auto;
+        padding: 6px 12px;
+        border: 1px solid #cacbcd;
+        background-color: #edeef0;
+        font-size: 12px;
+        color: #666;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

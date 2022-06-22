@@ -5,6 +5,8 @@
   background-color: #f7f9fa;
   display: flex;
   flex-direction: column;
+
+  //전체 수강강좌 파트
   .main-courses-container {
     display: flex;
     flex-direction: column;
@@ -31,7 +33,7 @@
         background-color: #fff;
         border-radius: 0px;
         border: 1px solid #999;
-        opacity:0.6;
+        opacity: 0.6;
         padding: 5px;
         &:hover {
           cursor: pointer;
@@ -68,6 +70,7 @@
           margin-right: 10px;
           .main-course-label-upper {
             color: #fff;
+            height: 50%;
             background-color: $courseLabelColor;
             padding: 5px 0;
           }
@@ -88,6 +91,105 @@
             font-size: 12px;
             color: #999;
           }
+        }
+      }
+    }
+  }
+
+  //공지사항 파트
+  .main-status-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+    margin-bottom: 10vh;
+    .main-status-header-display {
+      display: flex;
+      justify-content: space-between;
+      // height: 30%;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 0 14px 0;
+      .main-status-description {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        .main-status-notice {
+          color: $navyColor;
+          border-right: 1px solid #e0e0e0;
+          padding: 0px 10px;
+        }
+        .main-status-classes {
+          padding: 0px 10px;
+          color: #b2b2b2;
+        }
+      }
+      .main-status-button {
+        padding: 6px 12px;
+        border: 1px solid #e0e0e0;
+        background-color: #fff;
+        font-size: 12px;
+        &:hover {
+          cursor: pointer;
+          background-color: #e6e6e6;
+        }
+      }
+    }
+    .main-status-header-nondisplay{
+      display: flex;
+      justify-content: space-between;
+      // height: 30%;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 0 14px 0;
+      animation: 0.5s ease-in-out unloadEffect;
+    }.main-status-description {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      .main-status-notice {
+        color: $navyColor;
+        border-right: 1px solid #e0e0e0;
+        padding: 0px 10px;
+      }
+      .main-status-classes {
+        padding: 0px 10px;
+        color: #b2b2b2;
+      }
+    }
+    .main-status-button {
+      padding: 6px 12px;
+      border: 1px solid #e0e0e0;
+      background-color: #fff;
+      font-size: 12px;
+      &:hover {
+        cursor: pointer;
+        background-color: #e6e6e6;
+      }
+    }
+    @keyframes unloadEffect {
+      0%{
+          transform: translateX(0px);
+          opacity: 1;
+      }
+      100%{
+          transform: translateX(-100px);
+          opacity: 0;
+      }
+  }
+    .main-status-collection{
+      display: flex;
+      flex-direction: column;
+      .main-status-item{
+        display: flex;
+        justify-content: space-between;
+        margin: 3vh;
+        .main-status-item-title{
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .main-status-item-date{
+          font-size: 12px;
+          color: $grayFontColor;
         }
       }
     }
