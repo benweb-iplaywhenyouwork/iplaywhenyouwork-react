@@ -1,11 +1,9 @@
 import "../style/components/Navbar.css";
 import navLogo from "../static/img/nav-logo.png";
-import profile from "../static/img/profile.png";
 import iconPopover from "../static/img/icon/icon-popover.png";
 import iconNoti from "../static/img/icon/icon-noti.png";
 import iconMsg from "../static/img/icon/icon-msg.png";
 import iconMenus from "../static/img/icon/icon-menus.png";
-import Cam from "./Cam"
 import ImageComponent from "./ImageComponent";
 const Navbar = () => {
   const profileName = "서예빈";
@@ -18,7 +16,6 @@ const Navbar = () => {
       <div className="navbar-right">
         <div className="navbar-right-profile">
           <div className="profile-name">{profileName}</div>
-          {/* <img className="profile-img" src={profile} alt="profile-img" /> */}
           <ImageComponent></ImageComponent>
         </div>
         <div className="navbar-right-icons">
