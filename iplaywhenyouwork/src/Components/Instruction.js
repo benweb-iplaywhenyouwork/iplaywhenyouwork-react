@@ -25,10 +25,10 @@ export default class Instruction extends React.Component {
           >
             <div className="chosung-menu" >
               <div style={{color: '#999', position: "absolute", left:"10px"}} onClick={() => this.setState({Chosung: "문학"})}>문학</div>
-              <div style={{color: '#999', position: "absolute", left:"50px"}} onClick={() => this.setState({Chosung: "일반"})}>일반</div>
-              <div style={{color: '#999', position: "absolute", left:"90px"}} onClick={() => this.setState({Chosung: "역사"})}>역사</div>
-              <div style={{color: '#999', position: "absolute", left:"130px"}} onClick={() => this.setState({Chosung: "영화"})}>영화</div>
-              <div style={{color: '#999', position: "absolute", left:"170px"}} onClick={() => this.setState({Chosung: ""})}>리셋</div>
+              <div style={{color: '#999', position: "absolute", left:"45px"}} onClick={() => this.setState({Chosung: "일반"})}>일반</div>
+              <div style={{color: '#999', position: "absolute", left:"80px"}} onClick={() => this.setState({Chosung: "역사"})}>역사</div>
+              <div style={{color: '#999', position: "absolute", left:"115px"}} onClick={() => this.setState({Chosung: "영화"})}>영화</div>
+              <div style={{color: '#999', position: "absolute", left:"150px"}} onClick={() => this.setState({Chosung: ""})}>리셋</div>
             </div>
         {this.state.Chosung ? <MatchInitial inputField={this.state.Chosung}/>:null}
           </dialog>
