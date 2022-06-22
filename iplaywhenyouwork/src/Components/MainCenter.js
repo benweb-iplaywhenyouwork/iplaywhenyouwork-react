@@ -6,9 +6,6 @@ import Run from './Run';
 import {useState} from "react";
 
 const MainCenter = () => {
-<<<<<<< HEAD
-  
-=======
   const courseItems = [
     { title: "사회봉사1", professor: "홍길동" },
     { title: "벤처창업 웹 프로그래밍2", professor: "홍길동" },
@@ -18,7 +15,7 @@ const MainCenter = () => {
   ];
   const [runGame, setRunGame] = useState(false);
   const [effect, setEffect] = useState("display");
->>>>>>> 7b08d42c1b19f29730a9f9d5e3adc65424fa4021
+
 
   function randomDate() {
     const maxDate = Date.now();
