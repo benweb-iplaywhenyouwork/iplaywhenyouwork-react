@@ -23,9 +23,9 @@ function ParrotorHuman () {
     const parrotSound2 = new Audio(parrot2);
     const parrotSound3 = new Audio(parrot3);
     const parrotSound4 = new Audio(parrot4);
-    quizSounds.push(humanSound1);
-    quizSounds.push(parrotSound1);
     quizSounds.push(parrotSound2);
+    quizSounds.push(parrotSound1);
+    quizSounds.push(humanSound1);
     quizSounds.push(humanSound2);
     quizSounds.push(parrotSound3);
     quizSounds.push(humanSound3);
@@ -33,7 +33,7 @@ function ParrotorHuman () {
 
 
     const parrotClick = () =>{
-        if([1, 2, 4, 6].includes(index)){
+        if([0, 1, 4, 6].includes(index)){
             setAnswer("correct!");
             score++;
         }else{
@@ -43,7 +43,7 @@ function ParrotorHuman () {
     }
 
     const humanClick = () => {
-        if([0, 3, 5].includes(index)){
+        if([2, 3, 5].includes(index)){
             setAnswer("correct!");
             score++;
         }else{
@@ -53,6 +53,7 @@ function ParrotorHuman () {
     }
 
     const playSound = () => {
+        setAnswer("");
         quizSounds[index].play();
     }
 
